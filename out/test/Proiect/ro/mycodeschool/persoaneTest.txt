@@ -1,0 +1,5 @@
+1,Vasile,Ionescu,client,vemail@email.com,parola1
+2,Ion,Vasilescu,client,iemail@email.com,parola2
+3,Andrei,Ciobanu,admin,aemail@email.com,parola3
+4,Ducu,Bertu,client,demail@email.com,parola4
+
