@@ -36,7 +36,7 @@ public class ViewUser {
 
         controlPersoane = new ControlPersoane(Path.of("src", "ro", "mycodeschool", "persoane").toString());
 
-        controlOrder = new ControlOrder(Path.of("src", "ro", "mycodeschool", "orders").toString());
+        controlOrder = new ControlOrder(Path.of("src", "ro", "mASDAScodeschool", "orders").toString());
 
         this.clienti = clienti;
 
