@@ -5,9 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ro.mycodeschool.model.Persoana;
 
-import java.nio.file.Path;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.nio.file.Path;
 
 public class ControlPersoanaTest {
 
@@ -23,48 +24,64 @@ public class ControlPersoanaTest {
 
         controlPersoana.afisare();
 
-//
-//        assertEquals("aemail@email.com", controlPersoana.login("aemail@email.com", "parola3").getEmail());
-//        assertEquals(null, controlPersoana.login("aaemail@email.com", "parola3"));
-//
-//        assertEquals("parola3", controlPersoana.login("aemail@email.com", "parola3").getParola());
+        assertEquals("aemail@email.com", controlPersoana.login("aemail@email.com", "parola3").getEmail());
+        assertEquals(null, controlPersoana.login("aaemail@email.com", "parola3"));
+
+        assertEquals("parola3", controlPersoana.login("aemail@email.com", "parola3").getParola());
 
     }
 
     @Test
+    public void testUpdateNume(){
+        assertEquals("Gigel",controlPersoana.updateNume(1,"Gigel"));
+    }
+
+    @Test
+    public void testUpdatePrenume(){
+        assertEquals("Vasilescu",controlPersoana.updatePrenume(1,"Vasilescu"));
+    }
+
+    @Test
+    public void testUpdateFunctie(){
+        assertEquals("asistent",controlPersoana.updateStatusFunc(1,"asistent"));
+    }
+
+
+
+    @Test
     public void testLogin2() {
 
-//        controlPersoana.add(new Persoana("Alex,Ciobanu,true,alemail@email.com, parola9,"));
-//        controlPersoana.save();
-//        controlPersoana.afisare();
-////        assertEquals("alemail@email.com", controlPersoana.login("alemail@email.com", "parola3").getEmail());
-////        assertEquals("parola9", controlPersoana.login("alemail@email.com", "parola9").getParola());
-//
-//        controlPersoana.clear();
-//        controlPersoana.afisare();
-//        assertEquals(null, controlPersoana.login("alemail@email.com", "parola9"));
+        controlPersoana.add(new Persoana("5,Alex,Ciobanu,director,alemail@email.com, parola9,"));
+        controlPersoana.save();
+        controlPersoana.afisare();
+
+        controlPersoana.clear();
+        controlPersoana.afisare();
+        assertEquals(null, controlPersoana.login("alemail@email.com", "parola9"));
 
     }
 
     @Test
     public void testLogin3() {
 
-//        assertEquals("parola3", controlPersoana.login("aemail@email.com", "parola3").getParola());
-//        assertEquals(null, controlPersoana.login("aemail@email.com", "parola"));
-//        assertEquals("aemail@email.com", controlPersoana.login("aemail@email.com","parola3").getEmail());
+        assertEquals("parola3", controlPersoana.login("aemail@email.com", "parola3").getParola());
+        assertEquals(null, controlPersoana.login("aemail@email.com", "parola"));
+        assertEquals("aemail@email.com", controlPersoana.login("aemail@email.com","parola3").getEmail());
 
 
     }
 
     @Test
     public void testDeelete(){
-//        assertEquals(true, controlPersoana.delete("aemail@email.com"));
-//        controlPersoana.afisare();
+        assertEquals(true, controlPersoana.delete(1));
+        controlPersoana.afisare();
     }
 
     @Test
     public void testAfiseazaStatus(){
         controlPersoana.afiseazaStatus();
+
+        assertEquals(true,controlPersoana.getSize()>0);
     }
 
 

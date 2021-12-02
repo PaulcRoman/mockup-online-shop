@@ -24,12 +24,59 @@ public void initiere(){
 
         controlOrder.afisare();
 
-//        Order x = new Order("3,3,4321,strada garoafei 4, 2 Octombrie,2021");
-//
-//
-//        System.out.println(x);
-
     }
+
+    @Test
+    public void testLoad(){
+
+       int nr = controlOrder.getSize();
+
+       for (int i = 0; i<100; i++){
+
+           controlOrder.load();
+
+       }
+       controlOrder.afisare();
+       assertEquals(nr,controlOrder.getSize());
+    }
+
+    @Test
+    public void testLoad2(){
+        int nr = controlOrder.getSize();
+
+        for (int i=0;i<100;i++){
+            controlOrder = new ControlOrder(Path.of("test","ro","mycodeschool","ordersTest").toString());
+        }
+        controlOrder.afisare();
+        assertEquals(nr, controlOrder.getSize());
+    }
+
+//    @Test
+//    public void testAdd(){
+//
+//        for (int i = 0; i<10; i++){
+//            controlOrder.add(new Order(i+1,i+2,0.5+i,"adresa mea"+i,"Ianuarie 10"+i));
+//        }
+//
+//        for (int i=0;i<10;i++){
+//            assertEquals(true,controlOrder.getOrder(i+1)!=null);
+//        }
+//        controlOrder.save();
+//
+//    }
+
+    @Test
+    public void testUpdateAmount() {
+
+        assertEquals(1234.23,controlOrder.updateAmount(1,1234.23));
+    }
+
+    @Test
+    public void testUpdateDate(){
+        assertEquals("Ianuarie 10",controlOrder.updateDate(1,"Ianuarie 10"));
+    }
+
+
 
     @Test
     public void updateShippingAddressTest(){
@@ -37,6 +84,8 @@ public void initiere(){
         controlOrder.updateShippingAddress(1,"strada libertatii 2");
         controlOrder.afisare();
     }
+
+
 
 
 }

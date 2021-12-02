@@ -30,8 +30,9 @@ public class ControlOrder {
 
     public void load() {
 
-        try {
+        orderList.clear();
 
+        try {
 
 
             File file = new File(path);
@@ -45,11 +46,10 @@ public class ControlOrder {
 
                 linie = scanner.nextLine();
 
+                if (linie.equals("")==false) {
 
-//                System.out.println(linie);
-
-                orderList.add(new Order(linie));
-
+                    orderList.add(new Order(linie));
+                }
 
 
 
@@ -93,7 +93,19 @@ public class ControlOrder {
         }
     }
 
-    public void updateAmount(int id, double amount) {
+    public Order getOrder(int id){
+
+        int pozitie = getPozitie(id);
+
+        if (pozitie != -1){
+
+           return orderList.get(pozitie);
+        }
+        return null;
+
+    }
+
+    public double updateAmount(int id, double amount) {
         int pozitie = getPozitie(id);
 
         if (pozitie != -1) {
@@ -102,6 +114,7 @@ public class ControlOrder {
 
             order.setAmount(amount);
         }
+        return amount;
     }
 //
 //    public void updateQuantity(int id, int quantity){
@@ -115,7 +128,7 @@ public class ControlOrder {
 //        }
 //    }
 
-    public void updateDate(int id, String date) {
+    public String  updateDate(int id, String date) {
         int pozitie = getPozitie(id);
 
         if (pozitie != -1) {
@@ -124,6 +137,7 @@ public class ControlOrder {
 
             order.setDate(date);
         }
+        return date;
     }
 
     public void save(){
@@ -146,8 +160,11 @@ public class ControlOrder {
     public void delete(int id) {
 
         int pozitie = getPozitie(id);
-
-        orderList.remove(pozitie);
+        if (pozitie != -1) {
+            orderList.remove(pozitie);
+        }else {
+            System.out.println("Order inexistent");
+        }
 
     }
 
@@ -187,6 +204,10 @@ public class ControlOrder {
         }
 
         return 1;
+    }
+
+    public int getSize(){
+        return orderList.size();
     }
 
 

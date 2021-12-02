@@ -32,7 +32,7 @@ public class ViewUser {
 
         controlProducts = new ControlProducts(Path.of("src", "ro", "mycodeschool", "produse.txt").toString());
 
-        controlOrderDetails = new ControlOrderDetails(Path.of("src", "ro", "mycodeschool", "orderDetails").toString());
+       controlOrderDetails = new ControlOrderDetails(Path.of("src", "ro", "mycodeschool", "orderDetails").toString());
 
         controlPersoane = new ControlPersoane(Path.of("src", "ro", "mycodeschool", "persoane").toString());
 
@@ -42,7 +42,7 @@ public class ViewUser {
 
         scanner = new Scanner(System.in);
 
-        order= new Order(controlOrder.nextId(),clienti.getId(),0,clienti.getPrenume(),"12.12.12");
+        order= new Order(controlOrder.nextId(),clienti.getId(),0,clienti.getPrenume(),"12.12.13");
 
 
 
@@ -112,7 +112,6 @@ public class ViewUser {
 
     }
 
-
     public void addCos() {
 
         System.out.println("Introduceti marca");
@@ -155,7 +154,6 @@ public class ViewUser {
         for(OrderDetails orderDetails :details){
 
             Product p=controlProducts.returneazaProdus(orderDetails.getProductId());
-
 
             String  text="";
             text+="Marca "+p.getMarca()+"\n";

@@ -69,7 +69,7 @@ public class ControlOrderDetails {
 
     }
 
-    public void updateProductId(int id, int productID){
+    public int updateProductId(int id, int productID){
         int index = getPozitie(id);
 
         if (index != -1){
@@ -79,9 +79,11 @@ public class ControlOrderDetails {
              od.setProductId(productID);
 
         }
+
+        return productID;
     }
 
-    public void updatePrice(int id, double price){
+    public double updatePrice(int id, double price){
         int index = getPozitie(id);
 
         if (index != -1){
@@ -91,23 +93,29 @@ public class ControlOrderDetails {
             od.setPrice(price);
 
         }
+
+        return price;
     }
 
-    public void updateQuantity(int id, int quantity){
+    public int updateQuantity(int id, int quantity){
         int index = getPozitie(id);
 
         OrderDetails od = orderDetailsList.get(index);
 
         od.setQuantity(quantity);
+
+        return quantity;
     }
 
     
 
     public void deleteOrder(int id){
         int index = getPozitie(id);
-
-        orderDetailsList.remove(index);
-
+        if (index != -1) {
+            orderDetailsList.remove(index);
+        }else{
+            System.out.println("Index inexistent");
+        }
     }
 
     public void save(){

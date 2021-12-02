@@ -20,8 +20,25 @@ public class ControlProducts {
         load();
     }
 
-    public void add(Product product) {
-        listaProduse.add(product);
+    public boolean isProduct(String model){
+
+        for (Product product : listaProduse){
+
+            if (product.getModel().equals(model)){
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean add(Product product) {
+
+        if (isProduct(product.getModel())==false) {
+            listaProduse.add(product);
+            return true;
+        }
+        return false;
     }
 
     public void load() {
@@ -88,7 +105,7 @@ public class ControlProducts {
             }
         }
     }
-    public void updatePret(int id, double pret) {
+    public double updatePret(int id, double pret) {
 
         int index = getId(id);
 
@@ -98,14 +115,13 @@ public class ControlProducts {
 
             p.setPret(pret);
 
-        } else {
-            System.out.println("Erro");
         }
+        return pret;
 
 
     }
 
-    public void updateStock(int id, int stock) {
+    public int updateStock(int id, int stock) {
 
         int pozitie = getId(id);
 
@@ -114,13 +130,12 @@ public class ControlProducts {
             Product p = listaProduse.get(pozitie);
 
             p.setStock(stock);
-        } else {
-            System.out.println("Error");
         }
+        return stock;
 
     }
 
-    public void updateModel(int id, String model) {
+    public String updateModel(int id, String model) {
         int index = getId(id);
 
         if (index != -1) {
@@ -128,13 +143,12 @@ public class ControlProducts {
             Product p = listaProduse.get(index);
 
             p.setMarca(model);
-        } else {
-            System.out.println("Erro");
         }
 
+        return model;
     }
 
-    public void updateNume(int id, String nume) {
+    public String updateNume(int id, String nume) {
 
         int index = getId(id);
 
@@ -144,9 +158,8 @@ public class ControlProducts {
 
             p.setCategorie(nume);
 
-        } else {
-            System.out.println("Error");
         }
+        return nume;
     }
 
 
@@ -159,6 +172,26 @@ public class ControlProducts {
         } else {
             System.out.println("Produsul introdus nu exista");
         }
+    }
+
+    public int positionOf(String model){
+
+        for (Product p : listaProduse){
+            if (p.getModel().equals(model)){
+                return listaProduse.indexOf(p);
+            }
+        }
+        return -1;
+    }
+
+    public boolean sterg(String model){
+        int index = positionOf(model);
+
+        if (index != -1){
+            listaProduse.remove(index);
+            return true;
+        }
+        return false;
     }
 
     public void numarInstante() {

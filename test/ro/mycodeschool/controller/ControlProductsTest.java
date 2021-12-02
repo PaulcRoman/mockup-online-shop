@@ -2,7 +2,6 @@ package ro.mycodeschool.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ro.mycodeschool.controller.ControlProducts;
 import ro.mycodeschool.model.Product;
 
 import java.nio.file.Path;
@@ -21,8 +20,6 @@ class ControlProductsTest {
     @Test
     public void controlProduct(){
 
-//        controlProducts.load();
-
         controlProducts.afisare();
 
         assertEquals(true, controlProducts.getSize()>0);
@@ -38,53 +35,53 @@ class ControlProductsTest {
 
         controlProducts.afisare();
 
-
     }
 
     @Test
     public void updatePrice(){
 
-        controlProducts.updatePret(1,2200);
-        controlProducts.afisare();
+   assertEquals(1234.23,controlProducts.updatePret(1,1234.23));
 
     }
 
     @Test
     public void updateStoc(){
-        controlProducts.updateStock(1,4);
-        controlProducts.afisare();
+      assertEquals(10,controlProducts.updateStock(1,10));
     }
     @Test
     public void updateModel(){
-        controlProducts.updateModel(3,"Dell");
-        controlProducts.afisare();
+     assertEquals("seria 7",controlProducts.updateModel(1,"seria 7"));
     }
 
     @Test
     public void updateNume(){
-        controlProducts.updateNume(2,"Alien Ware");
-        controlProducts.afisare();
+
+        assertEquals("my laptop",controlProducts.updateNume(1,"my laptop"));
+
     }
 
     @Test
     public void testSterge(){
-        controlProducts.delete(1);
-
-        assertEquals(0, controlProducts.getId(1));
-
         controlProducts.afisare();
+
+        assertEquals(true,controlProducts.sterg("A15"));
+
+        assertEquals(false,controlProducts.sterg("A13"));
+
     }
 
     @Test
     public void numarInstanteTest(){
 
-        controlProducts.numarInstante();
+        assertEquals(true,controlProducts.getSize()>0);
     }
 
     @Test
     public void afiseazaLaptopTest(){
 
         controlProducts.afiseazaLaptop();
+
+        assertEquals(true,controlProducts.getSize()>0);
     }
 
     @Test

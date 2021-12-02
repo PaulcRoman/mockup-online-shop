@@ -36,32 +36,46 @@ public void initiere(){
 
     @Test
     public void testadd(){
-        OrderDetails orderDetails = new OrderDetails("1,4,prod4,123.5,1");
+        OrderDetails orderDetails = new OrderDetails("1,4,4,5.1123,1");
         controlOrderDetails.add(orderDetails);
         controlOrderDetails.afisare();
 
     }
 
     @Test
+    public void testGetPozitie(){
+
+        for (int i =0; i<5; i++){
+
+            controlOrderDetails.add(new OrderDetails("13,13,13,231.22,13"));
+            assertEquals(true,controlOrderDetails.getPozitie(13)>=0);
+
+        }
+
+        for (int i = 0; i<5; i++){
+            controlOrderDetails.deleteOrder(13);
+            assertEquals(true,controlOrderDetails.getPozitie(13)>=-1);
+        }
+    }
+
+    @Test
     public void testUpdateId(){
 
-        controlOrderDetails.updateProductId(2,3);
-        controlOrderDetails.afisare();
+        assertEquals(4,controlOrderDetails.updateProductId(2,4));
 
     }
 
     @Test
     public void testUpdatePrice(){
 
-        controlOrderDetails.updatePrice(1,123.45);
-        controlOrderDetails.afisare();
+        assertEquals(222.22, controlOrderDetails.updatePrice(2,222.22));
+
     }
 
     @Test
     public void updateQuantity(){
 
-        controlOrderDetails.updateQuantity(1,2);
-        controlOrderDetails.afisare();
+        assertEquals(100,controlOrderDetails.updateQuantity(1,100));
     }
 
     @Test
@@ -74,7 +88,7 @@ public void initiere(){
     @Test
     public void saveTest(){
 
-        controlOrderDetails.add(new OrderDetails("4,prod4,1145.4,2"));
+        controlOrderDetails.add(new OrderDetails("4,4,4,4.444,2"));
         controlOrderDetails.save();
         controlOrderDetails.afisare();
     }

@@ -89,7 +89,7 @@ public class ControlPersoane {
     }
 
 
-    public void updateNume(int id, String nume) {
+    public String updateNume(int id, String nume) {
 
         int pozitie = getPozitie(id);
 
@@ -100,10 +100,11 @@ public class ControlPersoane {
             p.setNume(nume);
 
         }
+        return nume;
 
     }
 
-    public void updatePrenume(int id, String prenume) {
+    public String updatePrenume(int id, String prenume) {
 
         int pozitie = getPozitie(id);
 
@@ -114,10 +115,11 @@ public class ControlPersoane {
             p.setPrenume(prenume);
 
         }
+        return prenume;
 
     }
 
-    public void updateStatusAdm(int id, String functie) {
+    public String updateStatusFunc(int id, String functie) {
 
         int pozitie = getPozitie(id);
 
@@ -128,6 +130,7 @@ public class ControlPersoane {
             p.setFunctie(functie);
 
         }
+        return functie;
 
     }
 
